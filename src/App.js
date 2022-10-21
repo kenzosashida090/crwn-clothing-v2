@@ -1,7 +1,5 @@
-import CategoryItem from './components/category-item/category-item.component';
+import Directory from './components/category-item/directory/directory.component';
 
-import './components/directory/categories.styles.scss'
-import Directory from './components/directory/directory.component';
 const App = () => {
   
   return (
