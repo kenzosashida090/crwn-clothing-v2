@@ -18,7 +18,7 @@ const NavigationBar = ()=>{
                 SHOP
 
             </Link>
-            <Link className="nav-link" to="/SignIn">
+            <Link className="nav-link" to="/Auth">
                 SIGN IN
 
             </Link>
