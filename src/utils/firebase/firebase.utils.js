@@ -7,7 +7,9 @@ import {
     signInWithPopup,
     GoogleAuthProvider,
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
     } from "firebase/auth"
     import { GithubAuthProvider } from "firebase/auth";
 import {
@@ -75,51 +77,7 @@ const firebaseConfig = {
     return userDocRef
   }
  
-  export const createUserFacebookFromAuth = async (userAuth) =>{
-    const userDocRef = doc(db,'userFacebook',userAuth.uid)
-    console.log(userAuth);
-    const userResponse = await getDoc(userDocRef)
 
-    if(!userResponse.exists()){
-        const {displayName, email} = userAuth
-        const createdAt = new Date()
-        try{
-            await setDoc(userDocRef,{
-                displayName,
-                email,
-                createdAt
-            })
-        }catch (error){
-            console.log('error creating userr');
-
-        }
-        
-
-    }
-  }
-  export const createUserGitHubFromAuth = async (userAuth) =>{
-    const userDocRef = doc(db,'userGitHub',userAuth.uid)
-    const userResponse = await getDoc(userDocRef)
-    console.log(userAuth);
-    if(!userResponse.exists()){ 
-        const{displayName,email} = userAuth
-        const createdAt = new Date()
-        try{
-            await setDoc(userDocRef,{
-                displayName,
-                email,
-                createdAt
-        })
-
-        }catch(error){
-            console.log('error creating userr');
-
-        }
-
-    }
-
-    return userDocRef
-  }
 
   export const createAuthUserWithEmailAndPassword = async (email,password) =>{
     if (!email || !password) return;
@@ -135,6 +93,9 @@ const firebaseConfig = {
 
 
   }
+
+  export const signOutUser = async () => signOut(auth)
+  export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth,callback)
   //for our auth theres only one way to auth but with signin wit pop up 
   //we need to provide the auth and the provider that in this case is a google auth provider
   // So this is a class that we can set if we want a facebook auth or a github auth 

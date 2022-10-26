@@ -10,28 +10,32 @@ import Button from "../button/button.component";
 import "../../routes/auth/sign-in.style.scss"
 import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 // import Button from '@mui/material/Button';
+import { useContext } from "react";
+import { UserContext} from "../context/context.component"; 
 import "./singIn.style.scss"
 const SignInEmail = ()=>{
     const defaultFormatFields = {
         Email :'',
         Password: ''
     }
+    //const {setCurrentUser} = useContext(UserContext) // will connect the context to this sign in form 
     const[formFields,setFormFields] = useState(defaultFormatFields)
     const {Email,Password} = formFields
     const resetForm= ()=>{
         setFormFields(defaultFormatFields)
     }
     const logGoogleUser = async ()=>{
-        const {user} = await SignWithGooglePopup();
-        const userDocRef = await createUserDocumentFromAuth(user)
+        await SignWithGooglePopup();
+ 
     }
     const logFacebookUser = async ()=>{
-        const {user} = await SignWithFacebookPopup();
-        const userDocRef = await createUserFacebookFromAuth(user)
+        await SignWithFacebookPopup();
+   
     }
     const logGitHubUser = async()=>{
-        const {user} = await SignWithGitHubPopup()
-        const userDocRef = await createUserGitHubFromAuth(user)
+     await SignWithGitHubPopup()
+
+     //   {setCurrentUser(user)} // this will allow us to track if we are sign in or not .
 
     }
     const handleChange = (event)=>{
@@ -44,8 +48,8 @@ const SignInEmail = ()=>{
         event.preventDefault();
 
         try{
-            const response = await signInAuthUserWithEmailAndPassword(Email,Password)
-            console.log(response);
+            const {user}= await signInAuthUserWithEmailAndPassword(Email,Password)
+         //   {setCurrentUser(user)}
             resetForm()
         }catch (error){
             console.log(error.message);

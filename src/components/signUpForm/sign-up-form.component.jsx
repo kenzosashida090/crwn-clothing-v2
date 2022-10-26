@@ -9,6 +9,8 @@ import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/
 // import Button from '@mui/material/Button';
 import "./signup-form.style.scss"
 import Button from "../button/button.component";
+import { useContext } from "react";
+import { UserContext } from "../context/context.component";
 const SignUpForm = () => {
     const defaultFormatiFields ={
         displayName:'',
@@ -17,6 +19,7 @@ const SignUpForm = () => {
         confirmPassword: ""
 
     }
+    //const {setCurrentUser} = useContext(UserContext)
     const [formFields,setFormFields] = useState(defaultFormatiFields)
     const {displayName,email,password,confirmPassword} = formFields
     const resetFormFields = ()=>{
@@ -35,6 +38,8 @@ const SignUpForm = () => {
             try{
             const {user} = await createAuthUserWithEmailAndPassword(email,password)
                 await createUserDocumentFromAuth(user,{displayName})
+              //  setCurrentUser(user)
+
                 resetFormFields()
             }catch(error){
             console.log(error.message);
