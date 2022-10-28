@@ -6,11 +6,14 @@ import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
 import './navigation.styles.scss'
 import { UserContext } from "../../components/context/context.component";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
+import { DropDownBoxContext } from "../../components/context/dropdownContext";
 import CartShopping from "../../components/cartShopping/cartShopping.component";
+import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component"
 // import {ReactComponent as imageLogo} from './assets/image2v.svg'
 
 const NavigationBar = ()=>{
   const {currentUser} =  useContext(UserContext)
+  const {isCartOpen} = useContext(DropDownBoxContext)
   // console.log(currentUser);
  
   console.log(currentUser);
@@ -28,18 +31,19 @@ const NavigationBar = ()=>{
             {currentUser ? <><span className="nav-link" onClick={signOutUser}>Sign Out</span></> 
               :
               <>
-              <Link className="nav-link" to="/Auth">
+              <Link className="nav-link " to="/Auth">
                 Sign In 
 
             </Link>
 
               </>
-            
+              
 
             }
             <CartShopping/>
 
         </div>
+        {isCartOpen && <CartDropdown />}
         </div>
           <Outlet/>
   
