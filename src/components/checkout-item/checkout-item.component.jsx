@@ -6,7 +6,7 @@ const CheckOutItem = ({item})=>{
   
     const {name,imageUrl,price,quantity} = item
     const {deleteItemtoCart,removeItemToCart,addItemToCart} = useContext(DropDownBoxContext)
-    const {cartItems} = useContext(DropDownBoxContext)
+
     const deleteProductToCar = ()=> deleteItemtoCart(item)
     return(
         <div className="checkout-item-container">

@@ -10,7 +10,6 @@ export const Button_Type_Class = {
 } 
 
 const getButton = (buttonType = Button_Type_Class.base) =>(
-
     {
         [Button_Type_Class.base] : BaseButton,
         [Button_Type_Class.google] : GoogleSignInButton,

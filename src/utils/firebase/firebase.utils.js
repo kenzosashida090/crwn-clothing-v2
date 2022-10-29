@@ -3,7 +3,6 @@ import { FacebookAuthProvider } from "firebase/auth";
 import {
     
     getAuth,
-    signInWithRedirect,
     signInWithPopup,
     GoogleAuthProvider,
     createUserWithEmailAndPassword,

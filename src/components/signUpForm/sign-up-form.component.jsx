@@ -1,16 +1,15 @@
-import { async } from "@firebase/util";
+
 import React from "react";
+import Button from "../button/button.component"
 import {useState} from "react"
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
 import FormComponent from "../forms-components/form.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../routes/auth/sign-in.style.scss"
-import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import { solid} from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 // import Button from '@mui/material/Button';
 import "./signup-form.style.scss"
-import Button from "../button/button.component";
-import { useContext } from "react";
-import { UserContext } from "../context/context.component";
+
 const SignUpForm = () => {
     const defaultFormatiFields ={
         displayName:'',

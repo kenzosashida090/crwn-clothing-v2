@@ -1,8 +1,8 @@
 import React from "react";
-import { addCartItem, DropDownBoxContext } from "../../components/context/dropdownContext"
+import {DropDownBoxContext } from "../../components/context/dropdownContext"
 import { useContext } from "react"
 import "./checkout-style.scss"
-import Button from "../../components/button/button.component";
+
 import CheckOutItem from "../../components/checkout-item/checkout-item.component";
 const CheckOut= ()=>{
     const {cartItems,cartTotal} = useContext(DropDownBoxContext)

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { solid, regular, brands, icon, light } from '@fortawesome/fontawesome-svg-core/import.macro' 
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro' 
 import Button from "../button/button.component";
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import { DropDownBoxContext } from "../context/dropdownContext";
 
 import { CartIconContainer,ItemCount } from "./cart-shoppin";

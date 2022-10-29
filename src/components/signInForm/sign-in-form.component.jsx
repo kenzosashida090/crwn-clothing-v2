@@ -1,6 +1,5 @@
 import React from "react";
-import { createUserDocumentFromAuth, SignWithGooglePopup } from "../../utils/firebase/firebase.utils"
-import { createUserFacebookFromAuth,createUserGitHubFromAuth } from "../../utils/firebase/firebase.utils";
+import {SignWithGooglePopup } from "../../utils/firebase/firebase.utils"
 import { SignWithFacebookPopup,SignWithGitHubPopup,signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import FormComponent from "../forms-components/form.component";
 import { useState } from "react";
@@ -8,7 +7,7 @@ import "../signUpForm/signup-form.style.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button,{Button_Type_Class} from "../button/button.component";
 import "../../routes/auth/sign-in.style.scss"
-import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import {brands} from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 // import Button from '@mui/material/Button';
 import { useContext } from "react";
 import { UserContext} from "../context/context.component"; 
