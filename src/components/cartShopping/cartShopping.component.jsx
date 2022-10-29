@@ -3,18 +3,19 @@ import { solid, regular, brands, icon, light } from '@fortawesome/fontawesome-sv
 import Button from "../button/button.component";
 import { useContext, useState } from "react";
 import { DropDownBoxContext } from "../context/dropdownContext";
-import "./cart-shoppin.scss"
+
+import { CartIconContainer,ItemCount } from "./cart-shoppin";
 const CartShopping = () =>{
     const {isCartOpen,setIsCartOpen,cartCount} = useContext(DropDownBoxContext)
     const toggleCart = ()=> setIsCartOpen(!isCartOpen)
     return(
-        <div className="cart-icon-container" onClick={toggleCart}>
+        <CartIconContainer   onClick={toggleCart}>
       
          <FontAwesomeIcon className="icon-awesome" size="3x" icon={solid("bag-shopping") }  />
             
-            <span className="item-count">{cartCount}</span>
+            <ItemCount>{cartCount}</ItemCount>
 
-        </div>
+        </CartIconContainer>
 
 
     )

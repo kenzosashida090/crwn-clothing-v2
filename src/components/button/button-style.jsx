@@ -1,5 +1,7 @@
-.button-container {
-    min-width: 165px;
+import styled from "styled-components"
+
+export const BaseButton = styled.button`
+ min-width: 165px;
     width: auto;
     height: 50px;
     letter-spacing: 0.5px;
@@ -21,41 +23,49 @@
       color: black;
       border: 1px solid black;
     }
-  
-    &.google-sign-in {
-        background-color: #FF7D7D;
+
+`
+export const GoogleSignInButton = styled(BaseButton)`
+  background-color: #FF7D7D;
         color: white;
         border-color:#FF7D7D ;
   
       &:hover {
         background-color: #E26868;
-        border-color:none;
+        border-color:#FF7D7D;
+        color:white;
       }
-    }
-    &.github-sign-in {
-        background-color: #372948;   
+
+
+`
+export const GitHubSignInButton = styled(BaseButton)`
+  background-color: black;   
         border-color: #372948;
-        color: white;
+      
   
       &:hover {
-        background-color: #251B37;
+        background-color: white;
         border-color:none;
+        color:black;
       }
-    }
-    &.facebook-sign-in {
-        background-color: #7978FF;
+
+
+`
+export const FacebookSignInButton = styled(BaseButton)`
+ background-color: #7978FF;
         color: aliceblue;
         border-color: #7978FF;
   
       &:hover {
         background-color: #4649FF;
-  
-        border-color:none;
+        color:white;
+        border-color:aliceblue;
       }
-    }
-  
-    &.inverted {
-      background-color: white;
+
+
+`
+export const Inverted = styled(BaseButton)`
+  background-color: white;
       color: black;
       border: 1px solid black;
   
@@ -64,6 +74,4 @@
         color: white;
         border: none;
       }
-    }
-  }
-  
+`

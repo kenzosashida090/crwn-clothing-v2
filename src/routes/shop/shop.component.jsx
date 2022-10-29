@@ -1,23 +1,17 @@
-import React from "react";
-import { ProductsContext } from "../../components/context/prodocs.component";
-import { useContext } from "react";
-import ProductCard from "../../components/productCard/productCard.component";
+import React from "react"
+import {Route,Routes} from "react-router-dom"
+import CategoriesPreview from "../categories-preview/categories-preview-component"
 import "./shop.style.scss"
+import Category from "../category/category.component"
+
 const Shop = ()=>{
-const {products} =useContext(ProductsContext)
-    return(
-        <div className="shop-container">
-            {products.map((product)=>(
-                    
-                    <ProductCard key={product.id} products={product} />
-                    
 
-
-    )     )}
-
-        </div>
-
-    )
-
-}
+        return(
+           <Routes>
+                <Route index element={<CategoriesPreview/>}/>
+                <Route path=":category" element={<Category/>}/>
+           </Routes>
+        )
+    
+    }
 export default Shop

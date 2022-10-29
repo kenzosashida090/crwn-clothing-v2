@@ -5,17 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom'
 import {UserPorvider} from './components/context/context.component.jsx'
-import {ProductsProvider} from "./components/context/prodocs.component.jsx"
+import {CategoriesProvider} from "./components/context/categories.context.jsx"
 import {DropBoxProvider} from "./components/context/dropdownContext.jsx"
 ReactDOM.render(
   <React.StrictMode>
   <BrowserRouter>
   <UserPorvider>
-    <ProductsProvider>
+    <CategoriesProvider>
       <DropBoxProvider>
      <App />
      </DropBoxProvider>
-     </ProductsProvider>
+     </CategoriesProvider>
   </UserPorvider>
    
     </BrowserRouter>

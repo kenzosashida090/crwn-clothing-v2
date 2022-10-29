@@ -16,7 +16,11 @@ import {
     getFirestore,
     doc, //retrieve doc isnide our database 
     getDoc, 
-    setDoc
+    setDoc,
+    collection,
+    writeBatch,
+    query,
+    getDocs
 } from 'firebase/firestore'
 const firebaseConfig = {
     apiKey: "AIzaSyDInFFyoaeq5cAovEpLx789B53gM_k2KWY",
@@ -53,7 +57,32 @@ const firebaseConfig = {
 
 
   export const db = getFirestore() // allows us to tell firebase when we want to set a doc o get a doc
+  export const addCollectionAndDocuments = async(collectionKey,objectsToAdd) =>{
+      const collectionRef = collection(db,collectionKey)
+      const batch = writeBatch(db);
 
+      objectsToAdd.forEach((object)=>{
+        const docRef = doc(collectionRef,object.title.toLowerCase())
+        batch.set(docRef,object)
+
+
+      })
+      await batch.commit()
+      console.log("done");
+
+  }
+  export const getCategoriesAndDocuments = async ()=>{
+    const collectionRef = collection(db,'categories');
+    const q = query(collectionRef)
+
+    const querySnapshot = await getDocs(q);
+    const categoryMap = querySnapshot.docs.reduce((acc,docSnapshot)=>{
+      const {title,items} = docSnapshot.data()
+      acc[title.toLowerCase()] = items
+      return acc;
+    }, {})
+    return categoryMap
+  }
   export const createUserDocumentFromAuth = async (userAuth,additionalInformation) =>{
         const userDocRef = doc(db,'users',userAuth.uid)
         console.log(userAuth);

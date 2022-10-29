@@ -1,8 +1,8 @@
-import "./cart-dropdown.stule.scss"
-import Button from "../button/button.component"
+
+import Button,{Button_Type_Class} from "../button/button.component"
 import CartItem from "../cart-itme/cartItme.component"
 import { useContext } from "react"
-import { Link } from "react-router-dom";
+import { CartDropDownContainer,CartItems,EmptyMessage } from "./cart-dropdown.stule"
 import {useNavigate} from "react-router-dom";
 import { DropDownBoxContext } from "../context/dropdownContext"
 import CheckOut from "../../routes/checkout/checkout.component"
@@ -14,19 +14,25 @@ const CartDropdown = ()=>{
 
     }
 return(
-    <div className="cart-dropdown-container">
+    <CartDropDownContainer>
+    <CartItems>
+    {
+        cartItems.length ?   (cartItems.map((item) =>( <CartItem key={item.id} CartItem={item}/>)))  :
+        (
+            <span>YOUR CART IS EMPTY</span>
 
-    <div className="cart-items">
-    {cartItems.map((item) => <CartItem key={item.id} CartItem={item}/>)}
-    </div>
+        )
+    }
+    
+    </CartItems>
 
-    <Button buttonType='inverted' onClick = {handleClick}>
+    <Button buttonType={Button_Type_Class.inverted} onClick = {handleClick}>
     GO TO CHECKOUT
     </Button>
 
 
 
-    </div>
+    </CartDropDownContainer>
 
 )
 

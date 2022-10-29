@@ -6,7 +6,7 @@ import FormComponent from "../forms-components/form.component";
 import { useState } from "react";
 import "../signUpForm/signup-form.style.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Button from "../button/button.component";
+import Button,{Button_Type_Class} from "../button/button.component";
 import "../../routes/auth/sign-in.style.scss"
 import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 // import Button from '@mui/material/Button';
@@ -67,16 +67,16 @@ const SignInEmail = ()=>{
             
             <div className="buttons-container">
             <Button  type="submit" buttonType="inverted" id="button-size">Sign In</Button>
-            <Button type="button"  onClick={logGoogleUser} buttonType='google' id="button-size" ><FontAwesomeIcon id="IconAwesome" icon={brands('google')} size='2x'/> Sign In with google  </Button>
+            <Button type="button"  onClick={logGoogleUser} buttonType={Button_Type_Class.google} id="button-size" ><FontAwesomeIcon id="IconAwesome" icon={brands('google')} size='2x'/> Sign In with google  </Button>
                 
-            <Button type="button" onClick={logFacebookUser} buttonType='facebook' id="button-size">
+            <Button type="button" onClick={logFacebookUser} buttonType={Button_Type_Class.facebook} id="button-size">
             <FontAwesomeIcon icon={brands('facebook')} size='2x' id="IconAwesome" />
                 
                      Sign In with Facebook
              
             </Button>
 
-            <Button type="button" onClick={logGitHubUser} buttonType='inverted' id="button-size">
+            <Button type="button" onClick={logGitHubUser} buttonType={Button_Type_Class.github} id="button-size">
             <FontAwesomeIcon icon={brands('github')} size='2x' id="IconAwesome" />
                 
                      Sign In with GitHub

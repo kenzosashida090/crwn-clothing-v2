@@ -1,6 +1,5 @@
 
 
-import Directory from './components/category-item/directory/directory.component';
 import Home from './routes/home/home.component';
 import {Routes,Route} from 'react-router-dom';
 import NavigationBar from './routes/navigartion/navbar.component';
@@ -13,7 +12,7 @@ const App = () => {
   <Routes>
     <Route path='/' element={<NavigationBar/>}>
     <Route index element={<Home/>}/>
-    <Route path='/shop' element={<Shop/>}/>
+    <Route path='/shop/*' element={<Shop/>}/>
     <Route path='/Auth' element={<Authentication/>}/>
     <Route path ='/checkout' element={<CheckOut/>}/>
     
